@@ -1,0 +1,26 @@
+{% if messages %}
+{% for message in messages %}
+<h4 style="color:red;">{{ message|safe }}</h4>
+{% endfor %}
+{% endif %}
+<form action="" method="post">
+  {% csrf_token%}
+
+  <p>Text</p>
+  <textarea name="text" rows="8" cols="80">{{answer.text}}</textarea>
+
+  <p>Question</p>
+  <select name="question">
+    {% for question in questions %}
+        <option value={{question.id}} {% if answer.question == question %}selected{% endif %}>{{question.text}}</option>
+    {% endfor %}
+  </select>
+  <br>
+  <p>Right:<input type="checkbox" name="right" {% if answer.right %}checked{% endif %}></p>
+  <br><br>
+
+  <button type="submit" name="button">Save</button>
+
+</form>
+<br><br>
+<a href="{% url 'home' %}">Home</a>

@@ -1,0 +1,19 @@
+<h2>Millionaire</h2>
+<h4>Score : {{score}}</h4>
+{% if messages %}
+  {% for message in messages %}
+    <h4 style="color:red;">{{ message|safe }}</h4>
+  {% endfor %}
+{% endif %}
+<form action="" method="POST">
+  {% csrf_token %}
+  <h4>{{questions.text}}</h4>
+  {% for answer in answers %}
+    {% if answer.question == questions %}
+    {% csrf_token %}
+      <input type="radio" name="{{ questions.id }}" value="{{ answer.id }}"> {{ answer }} <br>
+    {% endif %}
+  {% endfor %}
+  <br>
+  <button type="submit" name="button">Next</button>
+</form>

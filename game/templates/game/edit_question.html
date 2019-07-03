@@ -1,0 +1,38 @@
+{% if messages %}
+{% for message in messages %}
+<h4 style="color:red;">{{ message|safe }}</h4>
+{% endfor %}
+{% endif %}
+<form action="" method="post">
+  {% csrf_token%}
+
+  <p>Text</p>
+  <textarea name="text" rows="8" cols="80">{{question.text}}</textarea>
+
+  <p>Weight</p>
+  <select name="weight">
+    <option value="{{question.weight}}" selected>{{question.weight}}</option>
+    <option value=5>5</option>
+    <option value=6>6</option>
+    <option value=7>7</option>
+    <option value=8>8</option>
+    <option value=9>9</option>
+    <option value=10>10</option>
+    <option value=11>11</option>
+    <option value=12>12</option>
+    <option value=13>13</option>
+    <option value=14>14</option>
+    <option value=15>15</option>
+    <option value=16>16</option>
+    <option value=17>17</option>
+    <option value=18>18</option>
+    <option value=19>19</option>
+    <option value=20>20</option>
+  </select>
+  <br><br>
+
+  <button type="submit" name="button">Save</button>
+
+</form>
+<br><br>
+<a href="{% url 'home' %}">Home</a>

@@ -1,0 +1,11 @@
+{% if messages %}
+  {% for message in messages %}
+    <h4 style="color:red;">{{ message|safe }}</h4>
+  {% endfor %}
+{% endif %}
+
+{% for question in questions %}
+  {{question.text}} - <a href="{% url 'edit_question' question.id %}">Edit</a> / <a href="{% url 'delete_question' question.id %}">Delete</a><br><br>
+{% endfor %}
+<br>
+<a href="{% url 'home' %}">Home</a>

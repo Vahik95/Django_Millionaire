@@ -1,0 +1,18 @@
+<h2>Welcome to Millionaire game</h2>
+<hr>
+<a href="{% url 'game' %}">Start the game</a>
+<br>
+<p>Your best score is :{% for score in best_score %}{{score.score}}{% endfor %}</p>
+{% if request.user.is_superuser %}
+  <a href="{% url 'add_question' %}" class="nav-link">Add question</a><br>
+  <a href="{% url 'add_answer' %}" class="nav-link">Add answer</a><br>
+  <a href="{% url 'modify_question' %}" class="nav-link">Modify questions</a><br>
+  <a href="{% url 'modify_answer' %}" class="nav-link">Modify answer</a><br>
+
+{% endif %}
+<a href="{% url 'logout' %}" class="nav-link">Logout</a>
+<hr>
+<h4>Top 10 highest scores</h4>
+{% for record in records %}
+  {{ record.user_name }}  {{record.user_surname}} : {{record.score}}<br>
+{% endfor %}
